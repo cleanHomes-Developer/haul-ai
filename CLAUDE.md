@@ -385,15 +385,22 @@ marketing/EMAIL_SEQUENCES.md     | Pre-S00 | All email sequences
 marketing/SOCIAL_CONTENT.md      | Pre-S00 | Social post templates
 
 CODE FILES ADDED HERE AS CREATED EACH SESSION:
-(Claude appends below this line)
+
+SESSION 1 — FRONTEND:
+apps/web/                          | S1      | Next.js 14 app directory
+apps/web/tailwind.config.ts        | S1      | Design system config (colors, fonts, spacing)
+apps/web/app/layout.tsx            | S1      | Root layout with metadata
+apps/web/app/globals.css           | S1      | Tailwind directives + CSS variables
+apps/web/app/page.tsx              | S1      | Landing page (hero, features, pricing teaser, CTA)
+apps/web/app/pricing/page.tsx      | S1      | Pricing page (4 tiers, FAQ, founding member offer)
 
 ═══════════════════════════════════════════════════════
 SECTION 5: PROGRESS LOG (append only)
 ═══════════════════════════════════════════════════════
 
 PROJECT_START: June 2026
-CURRENT_SESSION: 1
-STATUS: Environment setup complete. Building frontend.
+CURRENT_SESSION: 2
+STATUS: Frontend complete (landing + pricing). Building backend (FastAPI + Postgres).
 
 PLANNING_COMPLETE:
   - Full product design and architecture
@@ -417,6 +424,21 @@ Tests: Python 3.12.3, Node 24.15, npm 11.12, git 2.43, Docker 29.5 — all PASS
 Blocker: DAT API pending approval (3-14 days) — using mock data in sessions 3+
 Next: Session 1 — Initialize Next.js 14 in apps/web/
 
+SESSION_1 | 2026-06-07 | COMPLETE
+Built: Frontend landing page and pricing page
+Tasks:
+  1. Initialize Next.js 14 with TypeScript, Tailwind CSS ✓
+  2. Design system: tailwind.config.ts with navy/green/amber/red, system fonts, spacing ✓
+  3. Root layout with metadata (Haul.AI branding) ✓
+  4. globals.css with Tailwind directives + design system CSS variables ✓
+  5. Landing page: hero, 6-card features grid, pricing teaser, CTAs ✓
+  6. Pricing page: 4-tier cards (Starter/Growth/Fleet/Enterprise), FAQ, founding member offer ✓
+Dev server: running on http://localhost:3008 (Vercel deploy pending Session 11)
+Tests: npm run build PASS (both / and /pricing routes prerendered)
+Commits: 2 (landing page + pricing page)
+Blockers: None
+Next: Session 2 — FastAPI backend + Postgres + Clerk auth + Onboarding
+
 ═══════════════════════════════════════════════════════
 SECTION 6: TEST LOG (append only)
 ═══════════════════════════════════════════════════════
@@ -436,12 +458,20 @@ TESTS APPENDED BELOW:
   - Project structure (CLAUDE.md, SESSION_PLANS.md, docs/, marketing/) ✓
   - Git repository initialized ✓
 
+[S1 | 2026-06-07]
+  npm run build (apps/web) — PASS
+  ✓ Compiled successfully in 1953ms
+  ✓ TypeScript checks passed
+  ✓ 2 routes prerendered: / + /pricing (Static)
+  ✓ Production build ready
+
 ═══════════════════════════════════════════════════════
 SECTION 7: CURRENT SESSION
 ═══════════════════════════════════════════════════════
 
-SEE: SESSION_PLANS.md — Session 1 is the current active plan.
+SEE: SESSION_PLANS.md — Session 2 is the current active plan.
 Claude replaces this section with the next session at session end.
 
-CURRENT: SESSION 1 — DESIGN SYSTEM + LANDING PAGE + PRICING PAGE
-Copy Session 1 content from SESSION_PLANS.md to work from.
+CURRENT: SESSION 2 — AUTH + DATABASE + ONBOARDING + STRIPE
+Goal: Carrier can sign up, complete 4-step onboarding, subscribe, reach dashboard.
+First task: Set up FastAPI with /health endpoint. Ready? Say yes when you're ready for Session 2.
