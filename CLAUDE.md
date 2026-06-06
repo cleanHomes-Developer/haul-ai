@@ -479,31 +479,42 @@ First task: Set up FastAPI with /health endpoint. Ready? Say yes when you're rea
 ---
 SESSION_1 | 2026-06-07 | COMPLETE
 BUILT:
-  - apps/web initialized (Next.js 14, TypeScript, Tailwind)
-  - Design system: tailwind.config.ts, globals.css, design tokens
-  - Landing page: apps/web/app/page.tsx (navy theme, all sections)
-  - Pricing page: apps/web/app/pricing/page.tsx
+  - Next.js 14 initialized at apps/web/
+  - Design system: tailwind.config.ts, globals.css
+  - Landing page: apps/web/app/page.tsx (navy theme, hero, stats, features, pricing, footer)
+  - Pricing page: apps/web/app/pricing/page.tsx (4 plans, feature list, FAQ, Enterprise CTA)
   - Dashboard: apps/web/app/dashboard/page.tsx (full prototype)
-    Tabs: Loads, Fleet, Negotiations, Analytics
-    Components: Ticker tape, Header, Load board, Fleet table,
-                Negotiation transcript, Analytics with lane P&L
+    Ticker tape, Header with AI counter, Load board, Fleet table,
+    Negotiation transcript with chat bubbles, Analytics with lane P&L
+  - All pages: consistent navy #1B2A4A theme, Big Shoulders Display fonts, green #2E7D32 accent
 TESTS:
-  - npm run build → PASS: Compiled successfully
-  - Visual: Dashboard loads at localhost:3008/dashboard with correct design
+  - npm run build → PASS: Compiled successfully, 3 routes
+  - Visual confirmed: landing, pricing, dashboard all correct
 BLOCKER: None
-NEXT: Session 2 — Auth (Clerk) + PostgreSQL + carrier onboarding + Stripe
+NEXT_SESSION_STARTS_WITH:
+  - docker compose up -d (PostgreSQL 15 + Redis 7)
+  - Database models: carrier, truck, load, negotiation, broker, invoice
+  - Alembic migrations
+  - Clerk auth middleware
+  - 4-step onboarding wizard
+  - Stripe checkout
+GIT_TAG: session-1-complete
 
-SESSION_2_PARTIAL | 2026-06-07 | IN PROGRESS
+SESSION_2_PARTIAL | 2026-06-07 | PARTIAL
 BUILT:
-  - services/api/main.py (FastAPI, /health endpoint, CORS)
-  - services/api/config.py (pydantic settings)
+  - services/api/main.py (FastAPI, /health endpoint, CORS configured)
+  - services/api/config.py (pydantic settings, loads from .env.local)
   - services/api/requirements.txt
   - services/api/test_main.py
-  - apps/web/app/dashboard/page.tsx refined with larger fonts
-  NOTE: API originally created in apps/backend/ — moved to services/api/
+  - infra/docker-compose.yml (PostgreSQL 15 + Redis 7, haul-network bridge)
+  NOTE: Originally created in apps/backend/ — moved to services/api/
 TESTS:
-  - pytest services/api/test_main.py → PASS: /health endpoint working
-  - npm run build → PASS: All routes compile (/, /pricing, /dashboard)
-  - http://localhost:3008/dashboard → PASS: Dashboard renders, all interactions work
+  - curl http://localhost:8000/health → PASS: {"status":"ok","service":"haul.ai-api"}
+  - docker compose ps → PASS: postgres (healthy), redis (healthy) on localhost:5433, 6379
+  - npm run dev (port 3008) → PASS: landing, pricing, dashboard all rendering
 BLOCKER: None
-TODO: Continue with PostgreSQL, Clerk auth, onboarding, Stripe webhooks
+NEXT_SESSION_STARTS_WITH:
+  - Run: docker compose up -d from infra/
+  - Then: alembic init + models + migrations
+  - Then: Clerk middleware in Next.js
+GIT_TAG: none yet — session incomplete
