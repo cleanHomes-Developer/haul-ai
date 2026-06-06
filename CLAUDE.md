@@ -475,3 +475,35 @@ Claude replaces this section with the next session at session end.
 CURRENT: SESSION 2 — AUTH + DATABASE + ONBOARDING + STRIPE
 Goal: Carrier can sign up, complete 4-step onboarding, subscribe, reach dashboard.
 First task: Set up FastAPI with /health endpoint. Ready? Say yes when you're ready for Session 2.
+
+---
+SESSION_1 | 2026-06-07 | COMPLETE
+BUILT:
+  - apps/web initialized (Next.js 14, TypeScript, Tailwind)
+  - Design system: tailwind.config.ts, globals.css, design tokens
+  - Landing page: apps/web/app/page.tsx (navy theme, all sections)
+  - Pricing page: apps/web/app/pricing/page.tsx
+  - Dashboard: apps/web/app/dashboard/page.tsx (full prototype)
+    Tabs: Loads, Fleet, Negotiations, Analytics
+    Components: Ticker tape, Header, Load board, Fleet table,
+                Negotiation transcript, Analytics with lane P&L
+TESTS:
+  - npm run build → PASS: Compiled successfully
+  - Visual: Dashboard loads at localhost:3008/dashboard with correct design
+BLOCKER: None
+NEXT: Session 2 — Auth (Clerk) + PostgreSQL + carrier onboarding + Stripe
+
+SESSION_2_PARTIAL | 2026-06-07 | IN PROGRESS
+BUILT:
+  - services/api/main.py (FastAPI, /health endpoint, CORS)
+  - services/api/config.py (pydantic settings)
+  - services/api/requirements.txt
+  - services/api/test_main.py
+  - apps/web/app/dashboard/page.tsx refined with larger fonts
+  NOTE: API originally created in apps/backend/ — moved to services/api/
+TESTS:
+  - pytest services/api/test_main.py → PASS: /health endpoint working
+  - npm run build → PASS: All routes compile (/, /pricing, /dashboard)
+  - http://localhost:3008/dashboard → PASS: Dashboard renders, all interactions work
+BLOCKER: None
+TODO: Continue with PostgreSQL, Clerk auth, onboarding, Stripe webhooks
