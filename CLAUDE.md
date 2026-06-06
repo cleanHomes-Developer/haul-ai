@@ -392,8 +392,8 @@ SECTION 5: PROGRESS LOG (append only)
 ═══════════════════════════════════════════════════════
 
 PROJECT_START: June 2026
-CURRENT_SESSION: 0
-STATUS: Ready to build. All planning complete. No code yet.
+CURRENT_SESSION: 1
+STATUS: Environment setup complete. Building frontend.
 
 PLANNING_COMPLETE:
   - Full product design and architecture
@@ -407,7 +407,15 @@ PLANNING_COMPLETE:
   - All session plans written (S00-S11)
 
 SESSIONS APPENDED BELOW:
-(Claude appends session blocks here after each session)
+
+SESSION_0 | 2026-06-07 | COMPLETE
+Built: project setup, git init, GitHub push, all accounts created
+Accounts: Anthropic API, Clerk, Stripe, Bland.ai, EIA, OpenRouteService, FMCSA keys in .env.local
+Vercel: connected, root=apps/web, not deployed yet
+Railway: attempted, private network endpoint error (will retry in Session 11)
+Tests: Python 3.12.3, Node 24.15, npm 11.12, git 2.43, Docker 29.5 — all PASS
+Blocker: DAT API pending approval (3-14 days) — using mock data in sessions 3+
+Next: Session 1 — Initialize Next.js 14 in apps/web/
 
 ═══════════════════════════════════════════════════════
 SECTION 6: TEST LOG (append only)
@@ -417,14 +425,23 @@ PURPOSE: Every test ever run. PASS or FAIL. Timestamped.
 RULE: If something breaks, look here to find when it last passed.
 
 TESTS APPENDED BELOW:
-(Claude appends test results here after each session)
+
+[S00 | 2026-06-07]
+  verify_setup.py — 12/12 checks PASS
+  - Python 3.12.3 ✓
+  - Node.js v24.15.0 ✓
+  - npm 11.12.1 ✓
+  - Git 2.43.0 ✓
+  - Docker 29.5.2 ✓
+  - Project structure (CLAUDE.md, SESSION_PLANS.md, docs/, marketing/) ✓
+  - Git repository initialized ✓
 
 ═══════════════════════════════════════════════════════
 SECTION 7: CURRENT SESSION
 ═══════════════════════════════════════════════════════
 
-SEE: SESSION_PLANS.md — Session 0 is the current active plan.
+SEE: SESSION_PLANS.md — Session 1 is the current active plan.
 Claude replaces this section with the next session at session end.
 
-CURRENT: SESSION 0 — ENVIRONMENT SETUP
-Copy Session 0 content from SESSION_PLANS.md to work from.
+CURRENT: SESSION 1 — DESIGN SYSTEM + LANDING PAGE + PRICING PAGE
+Copy Session 1 content from SESSION_PLANS.md to work from.
