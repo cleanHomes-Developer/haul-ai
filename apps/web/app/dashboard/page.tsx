@@ -55,7 +55,7 @@ function Chip({s}:{s:string}) {
     won:{bg:N.greenBg,c:N.green,label:"Won"},
   };
   const {bg,c,label} = map[s]||map.pending;
-  return <span style={{display:"inline-block",padding:"2px 10px",borderRadius:2,background:bg,color:c,fontSize:11,fontWeight:700,fontFamily:"'Libre Franklin',sans-serif",letterSpacing:"0.04em",textTransform:"uppercase"}}>{label}</span>;
+  return <span style={{display:"inline-block",padding:"2px 10px",borderRadius:2,background:bg,color:c,fontSize:17,fontWeight:700,fontFamily:"'Libre Franklin',sans-serif",letterSpacing:"0.04em",textTransform:"uppercase"}}>{label}</span>;
 }
 
 function RateNum({rpm,mkt}:{rpm:number,mkt?:number}) {
@@ -63,7 +63,7 @@ function RateNum({rpm,mkt}:{rpm:number,mkt?:number}) {
   const color = rpm>=3.20?N.greenLt:rpm>=2.90?N.amber:N.red;
   return (
     <div>
-      <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:22,fontWeight:700,color,lineHeight:1}}>${rpm.toFixed(2)}</div>
+      <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color,lineHeight:1}}>${rpm.toFixed(2)}</div>
       {mkt&&<div style={{fontSize:10,color:diff>=0?N.greenLt:N.red,fontFamily:"'Libre Franklin',sans-serif",marginTop:1}}>{diff>=0?"+":""}{diff.toFixed(2)} vs mkt</div>}
     </div>
   );
@@ -76,7 +76,7 @@ function ScoreBar({score}:{score:number}) {
       <div style={{width:48,height:4,background:N.faint}}>
         <div style={{width:`${score}%`,height:"100%",background:color}}/>
       </div>
-      <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:14,fontWeight:700,color}}>{score}</span>
+      <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:17,fontWeight:700,color}}>{score}</span>
     </div>
   );
 }
@@ -145,7 +145,7 @@ export default function Dashboard() {
         <div style={{position:"absolute",right:0,top:0,bottom:0,width:80,background:`linear-gradient(270deg,${N.navy},transparent)`,zIndex:2}}/>
         <div ref={tickerRef} style={{display:"flex",whiteSpace:"nowrap",willChange:"transform"}}>
           {[...TICKER_ITEMS,...TICKER_ITEMS].map((item,i)=>(
-            <span key={i} style={{fontFamily:"'Libre Franklin',sans-serif",fontSize:11,color:"rgba(255,255,255,0.75)",padding:"0 32px",borderRight:`1px solid rgba(255,255,255,0.15)`}}>
+            <span key={i} style={{fontFamily:"'Libre Franklin',sans-serif",fontSize:17,color:"rgba(255,255,255,0.75)",padding:"0 32px",borderRight:`1px solid rgba(255,255,255,0.15)`}}>
               <span style={{color:"rgba(255,255,255,0.4)",marginRight:8}}>●</span>{item}
             </span>
           ))}
@@ -171,18 +171,18 @@ export default function Dashboard() {
               <span className="pulse" style={{width:7,height:7,borderRadius:"50%",background:N.greenLt,boxShadow:`0 0 6px ${N.greenLt}`}}/>
               <div>
                 <div style={{fontSize:10,color:"rgba(255,255,255,0.45)",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase"}}>AI Active</div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.white,lineHeight:1}}>{aiCount} actions today</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.white,lineHeight:1}}>{aiCount} actions today</div>
               </div>
             </div>
             <div style={{borderLeft:`1px solid rgba(255,255,255,0.15)`,paddingLeft:20}}>
               <div style={{fontSize:10,color:"rgba(255,255,255,0.45)",fontWeight:600,letterSpacing:"0.08em",textTransform:"uppercase"}}>Week Revenue</div>
-              <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.greenLt,lineHeight:1}}>$47,200</div>
+              <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.greenLt,lineHeight:1}}>$47,200</div>
             </div>
           </div>
         </div>
       </header>
 
-      {toast&&<div className="anim-right" style={{position:"fixed",top:112,right:24,background:N.navy,color:N.white,padding:"10px 18px",fontSize:13,fontWeight:600,zIndex:1000,borderLeft:`4px solid ${N.greenLt}`,fontFamily:"'Libre Franklin',sans-serif"}}>✓ {toast}</div>}
+      {toast&&<div className="anim-right" style={{position:"fixed",top:112,right:24,background:N.navy,color:N.white,padding:"10px 18px",fontSize:16,fontWeight:600,zIndex:1000,borderLeft:`4px solid ${N.greenLt}`,fontFamily:"'Libre Franklin',sans-serif"}}>✓ {toast}</div>}
 
       <div style={{flex:1,display:"flex",overflow:"hidden"}}>
 
@@ -192,8 +192,8 @@ export default function Dashboard() {
             <div style={{flex:1,overflow:"auto",display:"flex",flexDirection:"column"}}>
               <div style={{padding:"16px 24px",borderBottom:`1px solid ${N.rule}`,display:"flex",alignItems:"center",gap:16,background:N.white,position:"sticky",top:0,zIndex:10}}>
                 <div>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:22,color:N.navy}}>LOAD BOARD</div>
-                  <div style={{fontSize:11,color:N.mutedTxt,marginTop:1}}>AI searching DAT · Truckstop · RXO in real time</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:27,color:N.navy}}>LOAD BOARD</div>
+                  <div style={{fontSize:17,color:N.mutedTxt,marginTop:1}}>AI searching DAT · Truckstop · RXO in real time</div>
                 </div>
                 <div style={{marginLeft:"auto",display:"flex",gap:4}}>
                   {["all","negotiating","booked","pending","declined"].map(f=>(
@@ -209,20 +209,20 @@ export default function Dashboard() {
               {visibleLoads.map(l=>(
                 <div key={l.id} className="load-row" onClick={()=>setSelLoad(selLoad?.id===l.id?null:l)}
                   style={{display:"grid",gridTemplateColumns:"72px 1fr 1fr 68px 96px 100px 110px 1fr 100px",padding:"14px 24px",alignItems:"center",borderLeft:selLoad?.id===l.id?`3px solid ${N.navy}`:"3px solid transparent",background:selLoad?.id===l.id?N.faint:undefined}}>
-                  <div style={{fontFamily:"monospace",fontSize:11,color:N.mutedTxt,fontWeight:600}}>#{l.id}</div>
+                  <div style={{fontFamily:"monospace",fontSize:17,color:N.mutedTxt,fontWeight:600}}>#{l.id}</div>
                   <div>
-                    <div style={{fontWeight:700,fontSize:14,color:N.navy}}>{l.origin}</div>
-                    <div style={{fontSize:12,color:N.mutedTxt,marginTop:2}}>→ {l.dest}</div>
+                    <div style={{fontWeight:700,fontSize:17,color:N.navy}}>{l.origin}</div>
+                    <div style={{fontSize:15,color:N.mutedTxt,marginTop:2}}>→ {l.dest}</div>
                   </div>
                   <div>
-                    <div style={{fontSize:13,fontWeight:600,color:N.bodyTxt}}>{l.broker}</div>
-                    <div style={{fontSize:11,color:l.bScore>=90?N.greenLt:l.bScore>=75?N.amber:N.red,fontWeight:700,marginTop:2}}>Score {l.bScore}</div>
+                    <div style={{fontSize:16,fontWeight:600,color:N.bodyTxt}}>{l.broker}</div>
+                    <div style={{fontSize:17,color:l.bScore>=90?N.greenLt:l.bScore>=75?N.amber:N.red,fontWeight:700,marginTop:2}}>Score {l.bScore}</div>
                   </div>
                   <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:16,fontWeight:600,color:N.mutedTxt}}>{l.miles}</div>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:20,fontWeight:700,color:N.navy}}>${l.rate.toLocaleString()}</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:29,fontWeight:700,color:N.navy}}>${l.rate.toLocaleString()}</div>
                   <RateNum rpm={l.rpm} mkt={l.mktRate}/>
                   <Chip s={l.status}/>
-                  <div style={{fontSize:11,color:N.mutedTxt,fontStyle:"italic",paddingRight:8}}>{l.action}</div>
+                  <div style={{fontSize:17,color:N.mutedTxt,fontStyle:"italic",paddingRight:8}}>{l.action}</div>
                   <ScoreBar score={l.score}/>
                 </div>
               ))}
@@ -231,9 +231,9 @@ export default function Dashboard() {
               <div className="anim-right" style={{width:340,borderLeft:`1px solid ${N.rule}`,background:N.white,overflow:"auto",flexShrink:0}}>
                 <div style={{background:N.navy,padding:"20px 24px"}}>
                   <div style={{fontSize:10,color:"rgba(255,255,255,0.5)",fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:6}}>Load #{selLoad.id}</div>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:20,color:N.white}}>{selLoad.origin}</div>
-                  <div style={{fontSize:13,color:"rgba(255,255,255,0.5)",margin:"4px 0"}}>→ {selLoad.miles} miles</div>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:20,color:N.white}}>{selLoad.dest}</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:29,color:N.white}}>{selLoad.origin}</div>
+                  <div style={{fontSize:16,color:"rgba(255,255,255,0.5)",margin:"4px 0"}}>→ {selLoad.miles} miles</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:29,color:N.white}}>{selLoad.dest}</div>
                   <div style={{marginTop:14}}><Chip s={selLoad.status}/></div>
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",borderBottom:`1px solid ${N.rule}`}}>
@@ -250,20 +250,20 @@ export default function Dashboard() {
                     <div key={i} style={{padding:"14px 20px",borderRight:i%2===0?`1px solid ${N.rule}`:"none",borderBottom:`1px solid ${N.rule}`}}>
                       <div className="detail-label">{f.label}</div>
                       {f.big
-                        ?<div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:24,fontWeight:800,color:f.color||N.navy,lineHeight:1}}>{f.val}</div>
-                        :<div style={{fontFamily:"'Libre Franklin',sans-serif",fontSize:14,fontWeight:600,color:f.color||N.navy}}>{f.val}</div>
+                        ?<div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:29,fontWeight:800,color:f.color||N.navy,lineHeight:1}}>{f.val}</div>
+                        :<div style={{fontFamily:"'Libre Franklin',sans-serif",fontSize:17,fontWeight:600,color:f.color||N.navy}}>{f.val}</div>
                       }
                     </div>
                   ))}
                 </div>
                 <div style={{padding:"16px 20px",borderBottom:`1px solid ${N.rule}`,background:N.offWhite}}>
                   <div className="detail-label" style={{color:N.navy,marginBottom:6}}>AI Status</div>
-                  <div style={{fontSize:13,color:N.navy,fontWeight:600}}>{selLoad.action}</div>
+                  <div style={{fontSize:16,color:N.navy,fontWeight:600}}>{selLoad.action}</div>
                 </div>
                 <div style={{padding:"16px 20px",display:"flex",flexDirection:"column",gap:8}}>
-                  <button className="action-btn" onClick={()=>{notify("Load accepted");setSelLoad(null);}} style={{background:N.green,color:N.white,padding:"13px",fontSize:13,fontWeight:700,width:"100%",letterSpacing:"0.04em"}}>ACCEPT LOAD</button>
-                  <button className="action-btn" onClick={()=>setNegOpen(true)} style={{background:N.navy,color:N.white,padding:"11px",fontSize:13,fontWeight:600,width:"100%",letterSpacing:"0.04em"}}>VIEW NEGOTIATION</button>
-                  <button className="action-btn" onClick={()=>{notify("Load declined");setSelLoad(null);}} style={{background:N.white,color:N.red,padding:"11px",fontSize:13,fontWeight:600,width:"100%",border:`1px solid ${N.red}`,letterSpacing:"0.04em"}}>DECLINE</button>
+                  <button className="action-btn" onClick={()=>{notify("Load accepted");setSelLoad(null);}} style={{background:N.green,color:N.white,padding:"13px",fontSize:16,fontWeight:700,width:"100%",letterSpacing:"0.04em"}}>ACCEPT LOAD</button>
+                  <button className="action-btn" onClick={()=>setNegOpen(true)} style={{background:N.navy,color:N.white,padding:"11px",fontSize:16,fontWeight:600,width:"100%",letterSpacing:"0.04em"}}>VIEW NEGOTIATION</button>
+                  <button className="action-btn" onClick={()=>{notify("Load declined");setSelLoad(null);}} style={{background:N.white,color:N.red,padding:"11px",fontSize:16,fontWeight:600,width:"100%",border:`1px solid ${N.red}`,letterSpacing:"0.04em"}}>DECLINE</button>
                 </div>
               </div>
             )}
@@ -275,8 +275,8 @@ export default function Dashboard() {
           <div className="anim-fade" style={{flex:1,display:"flex",overflow:"hidden"}}>
             <div style={{flex:1,overflow:"auto"}}>
               <div style={{padding:"16px 24px 12px",borderBottom:`1px solid ${N.rule}`,background:N.white}}>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:22,color:N.navy}}>FLEET STATUS</div>
-                <div style={{fontSize:11,color:N.mutedTxt,marginTop:1}}>Live ELD sync · Auto check calls · 5 trucks</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:27,color:N.navy}}>FLEET STATUS</div>
+                <div style={{fontSize:17,color:N.mutedTxt,marginTop:1}}>Live ELD sync · Auto check calls · 5 trucks</div>
               </div>
               <div style={{display:"grid",gridTemplateColumns:"80px 1fr 120px 120px 90px 90px 90px",padding:"8px 24px",background:N.offWhite,borderBottom:`1px solid ${N.rule}`}}>
                 {["TRUCK","DRIVER","STATUS","LOCATION","ETA","HOS","FUEL"].map(h=>(
@@ -288,13 +288,13 @@ export default function Dashboard() {
                 return(
                   <div key={t.id} className="truck-row" onClick={()=>setSelTruck(selTruck?.id===t.id?null:t)}
                     style={{borderLeft:selTruck?.id===t.id?`3px solid ${N.navy}`:"3px solid transparent",background:selTruck?.id===t.id?N.faint:undefined}}>
-                    <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.navy}}>{t.id}</div>
+                    <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.navy}}>{t.id}</div>
                     <div>
-                      <div style={{fontWeight:600,fontSize:14,color:N.navy}}>{t.driver}</div>
-                      {t.load&&<div style={{fontSize:11,color:N.mutedTxt,marginTop:2}}>Load #{t.load}</div>}
+                      <div style={{fontWeight:600,fontSize:17,color:N.navy}}>{t.driver}</div>
+                      {t.load&&<div style={{fontSize:17,color:N.mutedTxt,marginTop:2}}>Load #{t.load}</div>}
                     </div>
-                    <div style={{fontSize:12,fontWeight:700,color:sc}}>{t.status}</div>
-                    <div style={{fontSize:12,color:N.bodyTxt}}>{t.location}</div>
+                    <div style={{fontSize:15,fontWeight:700,color:sc}}>{t.status}</div>
+                    <div style={{fontSize:15,color:N.bodyTxt}}>{t.location}</div>
                     <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:16,fontWeight:700,color:N.navy}}>{t.eta}</div>
                     <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:16,fontWeight:700,color:parseInt(t.hos)<4?N.red:N.navy}}>{t.hos}</div>
                     <div>
@@ -310,8 +310,8 @@ export default function Dashboard() {
             {selTruck&&(
               <div className="anim-right" style={{width:300,borderLeft:`1px solid ${N.rule}`,background:N.white,overflow:"auto",flexShrink:0}}>
                 <div style={{background:N.navy,padding:"20px 24px"}}>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:32,color:N.white,lineHeight:1}}>{selTruck.id}</div>
-                  <div style={{fontSize:14,fontWeight:600,color:"rgba(255,255,255,0.7)",marginTop:4}}>{selTruck.driver}</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:50,color:N.white,lineHeight:1}}>{selTruck.id}</div>
+                  <div style={{fontSize:17,fontWeight:600,color:"rgba(255,255,255,0.7)",marginTop:4}}>{selTruck.driver}</div>
                 </div>
                 <div style={{padding:"20px 24px",display:"flex",flexDirection:"column",gap:16}}>
                   {[
@@ -325,12 +325,12 @@ export default function Dashboard() {
                   ].map((f,i)=>(
                     <div key={i} style={{borderBottom:`1px solid ${N.faint}`,paddingBottom:14}}>
                       <div className="detail-label">{f.l}</div>
-                      <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:22,fontWeight:700,color:f.c||N.navy,lineHeight:1,marginTop:4}}>{f.v}</div>
+                      <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:f.c||N.navy,lineHeight:1,marginTop:4}}>{f.v}</div>
                     </div>
                   ))}
-                  <button className="action-btn" onClick={()=>notify(`Check call sent for ${selTruck.id}`)} style={{background:N.navy,color:N.white,padding:"13px",fontSize:13,fontWeight:700,width:"100%",letterSpacing:"0.04em",marginTop:4}}>SEND CHECK CALL</button>
+                  <button className="action-btn" onClick={()=>notify(`Check call sent for ${selTruck.id}`)} style={{background:N.navy,color:N.white,padding:"13px",fontSize:16,fontWeight:700,width:"100%",letterSpacing:"0.04em",marginTop:4}}>SEND CHECK CALL</button>
                   {selTruck.status==="Available"&&(
-                    <button className="action-btn" onClick={()=>notify(`Searching loads near ${selTruck.location}`)} style={{background:N.greenLt,color:N.white,padding:"11px",fontSize:13,fontWeight:700,width:"100%",letterSpacing:"0.04em"}}>FIND NEXT LOAD</button>
+                    <button className="action-btn" onClick={()=>notify(`Searching loads near ${selTruck.location}`)} style={{background:N.greenLt,color:N.white,padding:"11px",fontSize:16,fontWeight:700,width:"100%",letterSpacing:"0.04em"}}>FIND NEXT LOAD</button>
                   )}
                 </div>
               </div>
@@ -341,8 +341,8 @@ export default function Dashboard() {
         {/* NEGOTIATIONS */}
         {section==="negotiations"&&(
           <div className="anim-fade" style={{flex:1,overflow:"auto",padding:"24px 32px"}}>
-            <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:22,color:N.navy,marginBottom:4}}>NEGOTIATION ENGINE</div>
-            <div style={{fontSize:11,color:N.mutedTxt,marginBottom:24}}>AI managing 2 active threads — 1 won this session</div>
+            <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:27,color:N.navy,marginBottom:4}}>NEGOTIATION ENGINE</div>
+            <div style={{fontSize:17,color:N.mutedTxt,marginBottom:24}}>AI managing 2 active threads — 1 won this session</div>
             <div style={{display:"grid",gridTemplateColumns:"360px 1fr",gap:24}}>
               <div style={{display:"flex",flexDirection:"column",border:`1px solid ${N.rule}`}}>
                 {[
@@ -352,21 +352,21 @@ export default function Dashboard() {
                 ].map((n,i)=>(
                   <div key={i} style={{padding:"16px 20px",borderBottom:`1px solid ${N.rule}`,background:i===0?N.offWhite:N.white,cursor:"pointer",borderLeft:i===0?`3px solid ${N.navy}`:"3px solid transparent"}}>
                     <div style={{display:"flex",justifyContent:"space-between",marginBottom:8}}>
-                      <div style={{fontWeight:700,fontSize:14,color:N.navy}}>{n.broker}</div>
+                      <div style={{fontWeight:700,fontSize:17,color:N.navy}}>{n.broker}</div>
                       <div style={{display:"flex",gap:6}}>
                         <span style={{fontSize:9,fontWeight:700,letterSpacing:"0.08em",padding:"2px 7px",background:n.channel==="EMAIL"?N.faint:"#EDE9FE",color:n.channel==="EMAIL"?N.navy:"#4C1D95"}}>{n.channel}</span>
                         <Chip s={n.status}/>
                       </div>
                     </div>
-                    <div style={{fontSize:11,color:N.mutedTxt,marginBottom:10}}>{n.lane} · Round {n.round} · {n.time}</div>
+                    <div style={{fontSize:17,color:N.mutedTxt,marginBottom:10}}>{n.lane} · Round {n.round} · {n.time}</div>
                     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                       <div style={{borderLeft:`2px solid ${N.greenLt}`,paddingLeft:8}}>
                         <div style={{fontSize:9,color:N.mutedTxt,fontWeight:700,letterSpacing:"0.06em"}}>OUR OFFER</div>
-                        <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.greenLt}}>{n.our}</div>
+                        <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.greenLt}}>{n.our}</div>
                       </div>
                       <div style={{borderLeft:`2px solid ${N.amber}`,paddingLeft:8}}>
                         <div style={{fontSize:9,color:N.mutedTxt,fontWeight:700,letterSpacing:"0.06em"}}>THEIR OFFER</div>
-                        <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.amber}}>{n.their}</div>
+                        <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.amber}}>{n.their}</div>
                       </div>
                     </div>
                   </div>
@@ -375,12 +375,12 @@ export default function Dashboard() {
               <div style={{border:`1px solid ${N.rule}`,display:"flex",flexDirection:"column"}}>
                 <div style={{background:N.offWhite,borderBottom:`1px solid ${N.rule}`,padding:"14px 20px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                   <div>
-                    <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:18,color:N.navy}}>Echo Global — CHI → DAL</div>
-                    <div style={{fontSize:11,color:N.mutedTxt,marginTop:2}}>Email thread · Round 2</div>
+                    <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:27,color:N.navy}}>Echo Global — CHI → DAL</div>
+                    <div style={{fontSize:17,color:N.mutedTxt,marginTop:2}}>Email thread · Round 2</div>
                   </div>
                   <div style={{display:"flex",gap:8}}>
-                    <button className="action-btn" onClick={()=>notify("Accepted")} style={{background:N.green,color:N.white,padding:"8px 16px",fontSize:12,fontWeight:700,letterSpacing:"0.04em"}}>ACCEPT</button>
-                    <button className="action-btn" onClick={()=>notify("Declined")} style={{background:N.white,color:N.red,padding:"8px 16px",fontSize:12,fontWeight:600,border:`1px solid ${N.red}`,letterSpacing:"0.04em"}}>DECLINE</button>
+                    <button className="action-btn" onClick={()=>notify("Accepted")} style={{background:N.green,color:N.white,padding:"8px 16px",fontSize:15,fontWeight:700,letterSpacing:"0.04em"}}>ACCEPT</button>
+                    <button className="action-btn" onClick={()=>notify("Declined")} style={{background:N.white,color:N.red,padding:"8px 16px",fontSize:15,fontWeight:600,border:`1px solid ${N.red}`,letterSpacing:"0.04em"}}>DECLINE</button>
                   </div>
                 </div>
                 <div style={{flex:1,padding:"20px",overflow:"auto",display:"flex",flexDirection:"column",gap:16}}>
@@ -403,8 +403,8 @@ export default function Dashboard() {
         {/* ANALYTICS */}
         {section==="analytics"&&(
           <div className="anim-fade" style={{flex:1,overflow:"auto",padding:"24px 32px"}}>
-            <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:22,color:N.navy,marginBottom:4}}>REVENUE INTELLIGENCE</div>
-            <div style={{fontSize:11,color:N.mutedTxt,marginBottom:24}}>June 2026 · 5 trucks · 58 loads</div>
+            <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:27,color:N.navy,marginBottom:4}}>REVENUE INTELLIGENCE</div>
+            <div style={{fontSize:17,color:N.mutedTxt,marginBottom:24}}>June 2026 · 5 trucks · 58 loads</div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",borderTop:`3px solid ${N.navy}`,marginBottom:32}}>
               {[
                 {label:"Monthly Revenue",val:"$189,400",sub:"↑ 19% vs May",c:N.navy},
@@ -414,8 +414,8 @@ export default function Dashboard() {
               ].map((s,i)=>(
                 <div key={i} style={{padding:"20px 24px 16px",borderRight:i<3?`1px solid ${N.rule}`:"none"}}>
                   <div style={{fontSize:10,fontWeight:700,color:N.mutedTxt,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:8}}>{s.label}</div>
-                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:40,color:s.c,lineHeight:1}}>{s.val}</div>
-                  <div style={{fontSize:11,color:N.greenLt,fontWeight:600,marginTop:6}}>{s.sub}</div>
+                  <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:50,color:s.c,lineHeight:1}}>{s.val}</div>
+                  <div style={{fontSize:17,color:N.greenLt,fontWeight:600,marginTop:6}}>{s.sub}</div>
                 </div>
               ))}
             </div>
@@ -435,18 +435,18 @@ export default function Dashboard() {
               {lane:"Houston → Nashville",loads:6,rpm:2.90,margin:18,rev:4680,trend:-3},
             ].map((l,i)=>(
               <div key={i} style={{display:"grid",gridTemplateColumns:"1.4fr 80px 100px 80px 100px 180px 70px",padding:"14px 0",borderBottom:`1px solid ${N.faint}`,alignItems:"center"}}>
-                <div style={{fontWeight:600,fontSize:14,color:N.navy}}>{l.lane}</div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.navy}}>{l.loads}</div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:20,fontWeight:700,color:l.rpm>=3.20?N.greenLt:l.rpm>=2.90?N.amber:N.red}}>${l.rpm.toFixed(2)}</div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.navy}}>{l.margin}%</div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:N.navy}}>${(l.rev/1000).toFixed(1)}K</div>
+                <div style={{fontWeight:600,fontSize:17,color:N.navy}}>{l.lane}</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.navy}}>{l.loads}</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:29,fontWeight:700,color:l.rpm>=3.20?N.greenLt:l.rpm>=2.90?N.amber:N.red}}>${l.rpm.toFixed(2)}</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.navy}}>{l.margin}%</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:N.navy}}>${(l.rev/1000).toFixed(1)}K</div>
                 <div style={{display:"flex",alignItems:"center",gap:8}}>
                   <div style={{flex:1,height:6,background:N.faint}}>
                     <div style={{width:`${l.margin*2.5}%`,height:"100%",background:l.margin>=30?N.greenLt:l.margin>=20?N.amber:N.red}}/>
                   </div>
-                  <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:14,fontWeight:700,color:N.mutedTxt,minWidth:28}}>{l.margin}%</span>
+                  <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:17,fontWeight:700,color:N.mutedTxt,minWidth:28}}>{l.margin}%</span>
                 </div>
-                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:18,fontWeight:700,color:l.trend>0?N.greenLt:N.red}}>{l.trend>0?"+":""}{l.trend}%</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:27,fontWeight:700,color:l.trend>0?N.greenLt:N.red}}>{l.trend>0?"+":""}{l.trend}%</div>
               </div>
             ))}
           </div>
@@ -457,8 +457,8 @@ export default function Dashboard() {
         <div style={{position:"fixed",inset:0,background:"rgba(27,42,74,0.6)",zIndex:500,display:"flex",alignItems:"center",justifyContent:"center"}} onClick={()=>setNegOpen(false)}>
           <div style={{background:N.white,width:560,maxHeight:"80vh",overflow:"auto",borderTop:`4px solid ${N.greenLt}`}} onClick={e=>e.stopPropagation()}>
             <div style={{background:N.navy,padding:"16px 24px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:20,color:N.white}}>Echo Global — CHI → DAL</div>
-              <button onClick={()=>setNegOpen(false)} style={{background:"none",border:"1px solid rgba(255,255,255,0.3)",color:"rgba(255,255,255,0.7)",padding:"4px 12px",cursor:"pointer",fontSize:12,fontFamily:"'Libre Franklin',sans-serif"}}>CLOSE</button>
+              <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:29,color:N.white}}>Echo Global — CHI → DAL</div>
+              <button onClick={()=>setNegOpen(false)} style={{background:"none",border:"1px solid rgba(255,255,255,0.3)",color:"rgba(255,255,255,0.7)",padding:"4px 12px",cursor:"pointer",fontSize:15,fontFamily:"'Libre Franklin',sans-serif"}}>CLOSE</button>
             </div>
             <div style={{padding:"20px 24px",display:"flex",flexDirection:"column",gap:14}}>
               {NEG_THREAD.map((m,i)=>(
@@ -469,8 +469,8 @@ export default function Dashboard() {
               ))}
             </div>
             <div style={{padding:"16px 24px",borderTop:`1px solid ${N.rule}`,display:"flex",gap:10}}>
-              <button className="action-btn" onClick={()=>{notify("Accepted");setNegOpen(false);}} style={{background:N.green,color:N.white,padding:"11px 24px",fontSize:13,fontWeight:700,letterSpacing:"0.04em",flex:1}}>ACCEPT</button>
-              <button className="action-btn" onClick={()=>{notify("Declined");setNegOpen(false);}} style={{background:N.white,color:N.red,padding:"11px 24px",fontSize:13,fontWeight:600,border:`1px solid ${N.red}`,letterSpacing:"0.04em",flex:1}}>DECLINE</button>
+              <button className="action-btn" onClick={()=>{notify("Accepted");setNegOpen(false);}} style={{background:N.green,color:N.white,padding:"11px 24px",fontSize:16,fontWeight:700,letterSpacing:"0.04em",flex:1}}>ACCEPT</button>
+              <button className="action-btn" onClick={()=>{notify("Declined");setNegOpen(false);}} style={{background:N.white,color:N.red,padding:"11px 24px",fontSize:16,fontWeight:600,border:`1px solid ${N.red}`,letterSpacing:"0.04em",flex:1}}>DECLINE</button>
             </div>
           </div>
         </div>
