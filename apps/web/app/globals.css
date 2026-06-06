@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #1B2A4A;
+  --color-green: #2E7D32;
+  --color-amber: #7B4000;
+  --color-red: #B71C1C;
+  --color-white: #FFFFFF;
+  --color-off-white: #F5F7FA;
+  --color-faint: #E8EDF4;
+  --color-rule: #C9D3E0;
+  --color-muted: #536B8A;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FFFFFF;
+  color: #1B2A4A;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Trebuchet MS, sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+code, pre {
+  font-family: Menlo, Monaco, monospace;
+}
