@@ -5,18 +5,20 @@ services:
     image: postgres:15-alpine
     container_name: haul-ai-postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: haulai
+      POSTGRES_USER: haul
+      POSTGRES_PASSWORD: haul_dev_password_change_in_prod
+      POSTGRES_DB: haul_ai
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U haul -d haul_ai"]
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - haul-network
 
   redis:
     image: redis:7-alpine
@@ -30,7 +32,13 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - haul-network
 
 volumes:
   postgres_data:
   redis_data:
+
+networks:
+  haul-network:
+    driver: bridge

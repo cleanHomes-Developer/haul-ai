@@ -1,70 +1,101 @@
-export default function Home() {
+"use client";
+
+const N = {
+  navy:"#1B2A4A", navyMid:"#243552", navyLt:"#2D4066",
+  green:"#1B5E20", greenLt:"#2E7D32", greenBg:"#E8F5E9",
+  amber:"#7B4000", red:"#B71C1C", white:"#FFFFFF",
+  offWhite:"#F5F7FA", faint:"#E8EDF4", rule:"#C9D3E0",
+  muted:"#536B8A", body:"#1B2A4A",
+};
+
+export default function Landing() {
   return (
-    <main className="min-h-screen bg-off-white font-sans">
+    <div style={{fontFamily:"'Libre Franklin',sans-serif",background:N.white,color:N.body,minHeight:"100vh"}}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Libre+Franklin:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        *{box-sizing:border-box;margin:0;padding:0;}
+        a{text-decoration:none;}
+        .btn-primary{display:inline-block;background:${N.greenLt};color:${N.white};padding:16px 36px;font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border:none;transition:opacity 0.15s;}
+        .btn-primary:hover{opacity:0.88;}
+        .btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,0.4);color:${N.white};padding:16px 36px;font-family:'Libre Franklin',sans-serif;font-weight:700;font-size:15px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;background:none;transition:border-color 0.15s;}
+        .btn-ghost:hover{border-color:${N.white};}
+        .feature-card{background:${N.white};border:1px solid ${N.rule};border-left:4px solid ${N.greenLt};padding:28px;}
+        .plan-card{border:2px solid rgba(255,255,255,0.15);padding:36px;}
+        .plan-card.popular{border-color:${N.greenLt};background:${N.navyMid};}
+        .nav-link{color:rgba(255,255,255,0.6);font-size:14px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.15s;}
+        .nav-link:hover{color:${N.white};}
+      `}</style>
+
       {/* NAV */}
-      <nav className="bg-navy border-b-4 border-green px-6 py-4 flex items-center justify-between">
-        <span className="font-display text-white text-2xl font-black tracking-tight">
-          HAUL<span className="text-green">.</span>AI
-        </span>
-        <div className="flex gap-8 items-center">
-          <a href="#features" className="text-white/70 hover:text-white text-sm font-semibold tracking-wide uppercase">Features</a>
-          <a href="#pricing" className="text-white/70 hover:text-white text-sm font-semibold tracking-wide uppercase">Pricing</a>
-          <a href="#about" className="text-white/70 hover:text-white text-sm font-semibold tracking-wide uppercase">About</a>
-          <a href="/pricing" className="bg-green text-white px-5 py-2 text-sm font-bold tracking-wide uppercase hover:bg-green-dk transition-colors">
-            Get Started
-          </a>
+      <nav style={{background:N.navy,borderBottom:`4px solid ${N.greenLt}`,padding:"0 48px",height:68,display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+        <div style={{display:"flex",alignItems:"baseline",gap:0}}>
+          <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:30,color:N.white}}>HAUL</span>
+          <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:30,color:N.greenLt}}>.</span>
+          <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:30,color:N.white}}>AI</span>
+        </div>
+        <div style={{display:"flex",gap:36,alignItems:"center"}}>
+          <a href="#features" className="nav-link">Features</a>
+          <a href="#pricing" className="nav-link">Pricing</a>
+          <a href="/pricing" className="nav-link">Compare Plans</a>
+          <a href="/dashboard" className="btn-primary" style={{padding:"10px 24px",fontSize:13}}>View Demo</a>
         </div>
       </nav>
 
-      {/* TICKER TAPE */}
-      <div className="bg-navy-mid h-8 flex items-center overflow-hidden">
-        <div className="whitespace-nowrap text-white/60 text-xs font-mono animate-pulse px-4">
-          AI negotiating Detroit → Bessemer · $2,350 counter sent · Broker accepted · Conway → Waco booked at $1,800 · Check call sent to ADL · POD submitted to LogisticsOne ·
-        </div>
-      </div>
-
       {/* HERO */}
-      <section className="bg-navy px-8 py-24 text-center">
-        <p className="text-green text-sm font-bold tracking-widest uppercase mb-4">
+      <section style={{background:N.navy,padding:"100px 48px",textAlign:"center"}}>
+        <p style={{color:N.greenLt,fontSize:13,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",marginBottom:20}}>
           The AI Dispatch Network for Trucking
         </p>
-        <h1 className="font-display text-white text-6xl font-black leading-tight mb-6">
-          Your AI Dispatcher.<br />Never Sleeps.
+        <h1 style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:76,color:N.white,lineHeight:1.05,marginBottom:24}}>
+          Your AI Dispatcher.<br/>Never Sleeps.
         </h1>
-        <p className="text-white/70 text-xl max-w-2xl mx-auto mb-4">
+        <p style={{color:"rgba(255,255,255,0.65)",fontSize:20,maxWidth:640,margin:"0 auto 16px",lineHeight:1.6}}>
           Autonomous load negotiation. Real-time market intelligence.
           Community insights from 609 carriers. 11 intelligence layers.
         </p>
-        <p className="text-white/50 text-base max-w-xl mx-auto mb-10">
-          Dispatch service costs <span className="text-danger font-bold">$25,000/year</span>.
-          Haul.AI costs <span className="text-green font-bold">$1,188/year</span>.
-          Payback in 5 days.
+        <p style={{color:"rgba(255,255,255,0.4)",fontSize:16,marginBottom:44}}>
+          Dispatch service costs{" "}
+          <span style={{color:"#EF4444",fontWeight:700}}>$25,000/year</span>.
+          {" "}Haul.AI costs{" "}
+          <span style={{color:N.greenLt,fontWeight:700}}>$1,188/year</span>.
+          {" "}Payback in 5 days.
         </p>
-        <div className="flex gap-4 justify-center">
-          <a href="/pricing" className="bg-green text-white px-8 py-4 font-bold text-lg uppercase tracking-wide hover:bg-green-dk transition-colors">
-            Start Free Trial
-          </a>
-          <a href="#features" className="border-2 border-white/40 text-white px-8 py-4 font-bold text-lg uppercase tracking-wide hover:border-white transition-colors">
-            Watch Demo
-          </a>
+        <div style={{display:"flex",gap:16,justifyContent:"center"}}>
+          <a href="/pricing" className="btn-primary">Start Free Trial</a>
+          <a href="/dashboard" className="btn-ghost">Watch Demo →</a>
+        </div>
+      </section>
+
+      {/* STATS STRIP */}
+      <section style={{background:N.navyMid,padding:"28px 48px"}}>
+        <div style={{maxWidth:960,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:0}}>
+          {[
+            {val:"609",label:"Carriers on Platform"},
+            {val:"$0.18",label:"Avg Rate/Mi Improvement"},
+            {val:"24/7",label:"Autonomous Operation"},
+            {val:"11",label:"Intelligence Layers"},
+          ].map((s,i)=>(
+            <div key={i} style={{textAlign:"center",padding:"16px 0",borderRight:i<3?`1px solid rgba(255,255,255,0.1)`:"none"}}>
+              <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:42,color:N.greenLt,lineHeight:1}}>{s.val}</div>
+              <div style={{fontSize:13,color:"rgba(255,255,255,0.5)",marginTop:6,fontWeight:600,letterSpacing:"0.04em"}}>{s.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* PROBLEM */}
-      <section className="bg-white px-8 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-muted text-sm font-bold tracking-widest uppercase text-center mb-12">
-            The Problem
-          </p>
-          <div className="grid grid-cols-3 gap-8">
+      <section style={{background:N.offWhite,padding:"80px 48px"}}>
+        <div style={{maxWidth:960,margin:"0 auto"}}>
+          <p style={{color:N.muted,fontSize:12,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",textAlign:"center",marginBottom:48}}>The Problem We Solve</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
             {[
-              { stat: '$25K', label: 'Average annual cost of a dispatch service at 5-8% gross' },
-              { stat: '7 hrs', label: 'Hours per day a dispatcher spends on calls and emails' },
-              { stat: '$470', label: 'Short-paid by GlobalTranz for missing BOL times — real incident' },
-            ].map((item, i) => (
-              <div key={i} className="border border-rule p-8 text-center">
-                <div className="font-display text-danger text-6xl font-black mb-3">{item.stat}</div>
-                <p className="text-muted text-sm leading-relaxed">{item.label}</p>
+              {stat:"$25K",color:N.red,label:"Average annual cost of a dispatch service at 5-8% of gross revenue"},
+              {stat:"7 hrs",color:N.amber,label:"Hours per day a dispatcher spends on broker calls and emails"},
+              {stat:"$470",color:N.red,label:"Short-paid by GlobalTranz for missing BOL handwritten times — real incident"},
+            ].map((item,i)=>(
+              <div key={i} style={{background:N.white,border:`1px solid ${N.rule}`,padding:"36px",textAlign:"center"}}>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontSize:64,fontWeight:900,color:item.color,lineHeight:1,marginBottom:16}}>{item.stat}</div>
+                <p style={{color:N.muted,fontSize:15,lineHeight:1.6}}>{item.label}</p>
               </div>
             ))}
           </div>
@@ -72,26 +103,44 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section id="features" className="bg-off-white px-8 py-20">
-        <div className="max-w-5xl mx-auto">
-          <p className="text-muted text-sm font-bold tracking-widest uppercase text-center mb-4">
-            11 Intelligence Layers
-          </p>
-          <h2 className="font-display text-navy text-5xl font-black text-center mb-12">
-            Why Carriers Choose Haul.AI
-          </h2>
-          <div className="grid grid-cols-3 gap-6">
+      <section id="features" style={{background:N.white,padding:"80px 48px"}}>
+        <div style={{maxWidth:960,margin:"0 auto"}}>
+          <p style={{color:N.muted,fontSize:12,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",textAlign:"center",marginBottom:12}}>11 Intelligence Layers</p>
+          <h2 style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:52,color:N.navy,textAlign:"center",marginBottom:48}}>Why Carriers Choose Haul.AI</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:20}}>
             {[
-              { title: 'Cost Intelligence', desc: 'Live EIA fuel prices × exact truck miles. Real floor rate every load. Never lose money again.' },
-              { title: 'Market Intelligence', desc: 'DAT RateView + community benchmarks. Know what the market pays before you pick up the phone.' },
-              { title: 'Broker Psychology', desc: 'Anonymous community fingerprints. Know how each broker negotiates before the first word is sent.' },
-              { title: 'Temporal Intelligence', desc: 'Thursday 3-6PM? Aggressive. Friday after 3PM? Maximum. We know when brokers are desperate.' },
-              { title: 'Supply-Demand Micro', desc: 'Lane L/T ratios, weather events, port congestion. What brokers face right now.' },
-              { title: 'Autonomous Negotiation', desc: 'Email agent works 24/7. You get notified. No back-and-forth. Smart counteroffers every time.' },
-            ].map((f, i) => (
-              <div key={i} className="bg-white border border-rule p-6 border-l-4 border-l-green">
-                <h3 className="font-display text-navy text-xl font-bold mb-2">{f.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">{f.desc}</p>
+              {title:"Cost Intelligence",desc:"Live EIA fuel × exact truck miles / MPG + tolls + driver + overhead. Real floor rate every load. Never lose money again."},
+              {title:"Market Intelligence",desc:"DAT RateView + community benchmarks. Know what the market pays before you counter. Anchor at market, not hope."},
+              {title:"Broker Psychology",desc:"Anonymous community fingerprints from 609 carriers. Know how each broker negotiates before the first word is sent."},
+              {title:"Temporal Intelligence",desc:"Thursday 3-6PM? Aggressive. Friday after 3PM? Maximum. We know when brokers are desperate and use it."},
+              {title:"Supply-Demand Micro",desc:"Lane L/T ratios, weather events, port congestion. Real-time intelligence on what brokers face right now."},
+              {title:"Autonomous Negotiation",desc:"Email agent works 24/7. You get notified. No back-and-forth. Smart counteroffers using firm statement language."},
+            ].map((f,i)=>(
+              <div key={i} className="feature-card">
+                <h3 style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:800,fontSize:22,color:N.navy,marginBottom:12}}>{f.title}</h3>
+                <p style={{color:N.muted,fontSize:15,lineHeight:1.7}}>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOCIAL PROOF */}
+      <section style={{background:N.offWhite,padding:"80px 48px"}}>
+        <div style={{maxWidth:960,margin:"0 auto"}}>
+          <p style={{color:N.muted,fontSize:12,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",textAlign:"center",marginBottom:48}}>Real Results From Real Carriers</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:24}}>
+            {[
+              {quote:"The AI countered Echo Global twice and got us $3.20/mile on Chicago-Dallas. I was asleep when it happened.",name:"ILoad Logistics LLC",trucks:"2 trucks"},
+              {quote:"Saved $23,000 in the first year. That is what we were paying our dispatch service. The math is obvious.",name:"Carrier Beta Tester",trucks:"4 trucks"},
+              {quote:"It knows Christian Garza at ADL sends a question mark when he does not get updates. It sends ETAs before he asks.",name:"ILoad Logistics LLC",trucks:"2 trucks"},
+            ].map((t,i)=>(
+              <div key={i} style={{background:N.white,border:`1px solid ${N.rule}`,borderTop:`4px solid ${N.greenLt}`,padding:"32px"}}>
+                <p style={{color:N.body,fontSize:16,lineHeight:1.7,marginBottom:24,fontStyle:"italic"}}>"{t.quote}"</p>
+                <div style={{borderTop:`1px solid ${N.rule}`,paddingTop:16}}>
+                  <div style={{fontWeight:700,fontSize:15,color:N.navy}}>{t.name}</div>
+                  <div style={{fontSize:13,color:N.muted,marginTop:4}}>{t.trucks}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -99,48 +148,56 @@ export default function Home() {
       </section>
 
       {/* PRICING PREVIEW */}
-      <section id="pricing" className="bg-navy px-8 py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-green text-sm font-bold tracking-widest uppercase mb-4">Simple Pricing</p>
-          <h2 className="font-display text-white text-5xl font-black mb-4">No Surprises.</h2>
-          <p className="text-white/60 mb-12">Pick a plan. Add your fleet. Start getting smarter rates today.</p>
-          <div className="grid grid-cols-3 gap-6 mb-8">
+      <section id="pricing" style={{background:N.navy,padding:"80px 48px"}}>
+        <div style={{maxWidth:900,margin:"0 auto",textAlign:"center"}}>
+          <p style={{color:N.greenLt,fontSize:12,fontWeight:700,letterSpacing:"0.2em",textTransform:"uppercase",marginBottom:12}}>Simple Pricing</p>
+          <h2 style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:52,color:N.white,marginBottom:12}}>No Surprises.</h2>
+          <p style={{color:"rgba(255,255,255,0.5)",fontSize:16,marginBottom:52}}>Pick a plan. Add your fleet. Start getting smarter rates today.</p>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:20,marginBottom:32}}>
             {[
-              { name: 'Starter', price: '$99', trucks: '1–3 trucks', popular: false },
-              { name: 'Growth', price: '$299', trucks: '4–15 trucks', popular: true },
-              { name: 'Fleet', price: '$799', trucks: '16–50 trucks', popular: false },
-            ].map((plan, i) => (
-              <div key={i} className={`p-8 border-2 ${plan.popular ? 'border-green bg-navy-mid' : 'border-rule/30 bg-navy-lt/30'}`}>
-                {plan.popular && <p className="text-green text-xs font-bold tracking-widest uppercase mb-3">Most Popular</p>}
-                <div className="font-display text-white text-2xl font-black mb-1">{plan.name}</div>
-                <div className="font-display text-green text-5xl font-black">{plan.price}</div>
-                <div className="text-white/40 text-sm mb-6">/month · {plan.trucks}</div>
-                <a href="/pricing" className={`block py-3 font-bold text-sm uppercase tracking-wide text-center ${plan.popular ? 'bg-green text-white hover:bg-green-dk' : 'border border-white/30 text-white hover:border-white'} transition-colors`}>
+              {name:"Starter",price:"$99",trucks:"1–3 trucks",popular:false,features:["Email negotiation 24/7","Load scoring","DAT integration","Community intelligence"]},
+              {name:"Growth",price:"$299",trucks:"4–15 trucks",popular:true,features:["Everything in Starter","Voice agent","ELD integration","Automated check calls"]},
+              {name:"Fleet",price:"$799",trucks:"16–50 trucks",popular:false,features:["Everything in Growth","Driver mobile app","Factoring integration","Revenue analytics"]},
+            ].map((plan,i)=>(
+              <div key={i} className={`plan-card ${plan.popular?"popular":""}`}>
+                {plan.popular&&<p style={{color:N.greenLt,fontSize:12,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",marginBottom:12}}>Most Popular</p>}
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:26,color:N.white,marginBottom:4}}>{plan.name}</div>
+                <div style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:52,color:N.greenLt,lineHeight:1}}>{plan.price}</div>
+                <div style={{color:"rgba(255,255,255,0.4)",fontSize:14,marginBottom:28}}>/month · {plan.trucks}</div>
+                <div style={{display:"flex",flexDirection:"column",gap:10,marginBottom:28}}>
+                  {plan.features.map((f,j)=>(
+                    <div key={j} style={{display:"flex",alignItems:"center",gap:10}}>
+                      <span style={{color:N.greenLt,fontWeight:700,fontSize:16}}>✓</span>
+                      <span style={{color:"rgba(255,255,255,0.7)",fontSize:14}}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <a href="/pricing" style={{display:"block",padding:"14px",fontFamily:"'Libre Franklin',sans-serif",fontWeight:700,fontSize:14,letterSpacing:"0.06em",textTransform:"uppercase",textAlign:"center",background:plan.popular?N.greenLt:"none",color:N.white,border:plan.popular?"none":`1px solid rgba(255,255,255,0.3)`,cursor:"pointer",transition:"opacity 0.15s"}}>
                   Start Now
                 </a>
               </div>
             ))}
           </div>
-          <a href="/pricing" className="text-white/50 text-sm hover:text-white underline">
-            View full comparison →
-          </a>
+          <a href="/pricing" style={{color:"rgba(255,255,255,0.4)",fontSize:14,textDecoration:"underline"}}>View full feature comparison →</a>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-navy border-t border-rule/20 px-8 py-10">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <span className="font-display text-white text-xl font-black">
-            HAUL<span className="text-green">.</span>AI
-          </span>
-          <div className="flex gap-6">
-            <a href="#" className="text-white/40 text-sm hover:text-white">Privacy</a>
-            <a href="#" className="text-white/40 text-sm hover:text-white">Terms</a>
-            <a href="mailto:support@haulai.com" className="text-white/40 text-sm hover:text-white">support@haulai.com</a>
+      <footer style={{background:N.navyMid,borderTop:`1px solid rgba(255,255,255,0.1)`,padding:"36px 48px"}}>
+        <div style={{maxWidth:960,margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+          <div style={{display:"flex",alignItems:"baseline"}}>
+            <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:24,color:N.white}}>HAUL</span>
+            <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:24,color:N.greenLt}}>.</span>
+            <span style={{fontFamily:"'Big Shoulders Display',sans-serif",fontWeight:900,fontSize:24,color:N.white}}>AI</span>
           </div>
-          <p className="text-white/30 text-xs">© 2026 Haul Intelligence LLC</p>
+          <div style={{display:"flex",gap:32}}>
+            <a href="/pricing" style={{color:"rgba(255,255,255,0.4)",fontSize:14,fontWeight:600}}>Pricing</a>
+            <a href="/dashboard" style={{color:"rgba(255,255,255,0.4)",fontSize:14,fontWeight:600}}>Demo</a>
+            <a href="mailto:support@haulai.com" style={{color:"rgba(255,255,255,0.4)",fontSize:14,fontWeight:600}}>support@haulai.com</a>
+          </div>
+          <p style={{color:"rgba(255,255,255,0.25)",fontSize:13}}>© 2026 Haul Intelligence LLC</p>
         </div>
       </footer>
-    </main>
+    </div>
   );
 }
